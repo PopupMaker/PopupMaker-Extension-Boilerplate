@@ -78,7 +78,7 @@ class PopMake_Extension_Activation {
      * @since       1.0.0
      * @return      string The notice to display
      */
-    public function missing_edd_notice() {
+    public function missing_popmake_notice() {
         if( $this->has_popmake ) {
             $url  = esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $this->popmake_base ), 'activate-plugin_' . $this->popmake_base ) );
             $link = '<a href="' . $url . '">' . __( 'activate it', 'popmake-extension-activation' ) . '</a>';
