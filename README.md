@@ -42,6 +42,10 @@ This will activate the Popup Maker Extension Boilerplate. Because the Boilerplat
  * The `admin` folder is provided for reference. Any code that is explicit to the dashboard belongs here.
  * The `assets` folder contains subfolders for `css`, `img`, and `js` files. Common sense applies.
 
+## Credits
+
+ * Credit for this is due to both the Easy Digital Downloads team & in particular [Dan Griffiths](http://ghost1227.com/)
+
 ## License
 
 The Popup Maker Extension Boilerplate is licensed under the GPL v2 or later.
