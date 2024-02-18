@@ -2,7 +2,7 @@
 /**
  * Plugin controller.
  *
- * @copyright (c) 2021, Code Atlantic LLC.
+ * @copyright (c) 2024, Code Atlantic LLC.
  *
  * @package {PLUGIN_NAMESPACE}
  */
@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Localized container class.
  */
-abstract class Controller implements \{PLUGIN_NAMESPACE}\Interfaces\Controller {
+abstract class Controller implements \{ PLUGIN_NAMESPACE\Interfaces\Controller {
 
 	/**
 	 * Plugin Container.
@@ -29,7 +29,5 @@ abstract class Controller implements \{PLUGIN_NAMESPACE}\Interfaces\Controller {
 	 * @param \{PLUGIN_NAMESPACE}\Plugin\Plugin $container Plugin container.
 	 * @return void
 	 */
-	public function __construct( $container ) {
-		$this->container = $container;
-	}
-}
+public function __construct( $container ) [ $this->container = $container;
+	} ]

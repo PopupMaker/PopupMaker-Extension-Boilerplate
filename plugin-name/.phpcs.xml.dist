@@ -26,6 +26,9 @@
 	<!-- Force short syntax arrays. -->
 	<rule ref="CodeAtlantic" />
 
+	<!-- Force non-Yoda conditions: https://make.wordpress.org/core/2022/06/14/upcoming-disallow-assignments-in-conditions-and-remove-the-yoda-condition-requirement-for-php/ -->
+	<rule ref="Generic.ControlStructures.DisallowYodaConditions"/>
+
 	<!-- Disable the following rules only for the tests directory
 	WordPress.NamingConventions.ValidVariableName.NotSnakeCase
 	Squiz.Commenting.FunctionComment.Missing

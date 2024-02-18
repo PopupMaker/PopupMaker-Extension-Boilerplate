@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: {PLUGIN_NAME}
- * Plugin URI: 
+ * Plugin URI:
  * Description: {PLUGIN_DESCRIPTION}
  * Version: {PLUGIN_VERSION}
  * Author: Code Atlantic
@@ -14,8 +14,8 @@
  *
  * @package    {PLUGIN_NAME}
  * @author     Code Atlantic
- * @copyright  Copyright (c) 2023, Code Atlantic LLC.
- * 
+ * @copyright  Copyright (c) 2024, Code Atlantic LLC.
+ *
  * IMPORTANT! Ensure that you make the following adjustments
  * before releasing your extension:
  *
@@ -47,7 +47,7 @@
  *   FUNCTIONS CAN CAUSE PLUGIN CONFLICTS!
  */
 
-namespace {PLUGIN_NAMESPACE};
+namespace {PLUGIN_NAMESPACE}
 
 defined( 'ABSPATH' ) || exit;
 
@@ -63,7 +63,7 @@ function get_plugin_config() {
 		'version'       => '{PLUGIN_VERSION}',
 		'option_prefix' => '{PLUGIN_PREFIX}',
 		'text_domain'   => '{PLUGIN_TEXT_DOMAIN}',
-		'edd_id'		=> {EDD_ID},
+		'edd_id'        => {EDD_ID},
 		'fullname'      => \__( '{PLUGIN_NAME}', '{PLUGIN_TEXT_DOMAIN}' ),
 		'min_php_ver'   => '{MIN_PHP_VERSION}',
 		'min_wp_ver'    => '{MIN_WP_VERSION}',
@@ -107,7 +107,7 @@ if ( ! \{PLUGIN_NAMESPACE}\Vendor\CodeAtlantic\Autoloader\Autoloader::init( conf
 function check_prerequisites() {
 
 	// 1.a Check Prerequisites.
-	$prerequisites = new \{PLUGIN_NAMESPACE}\Vendor\CodeAtlantic\PrerequisiteChecks\Prerequisites(
+	$prerequisites = new \(){PLUGIN_NAMESPACE}\Vendor\CodeAtlantic\PrerequisiteChecks\Prerequisites(
 		[
 			[
 				// a. PHP Min Version.
@@ -138,7 +138,6 @@ function check_prerequisites() {
 
 		return false;
 	}
-
 
 	return true;
 }

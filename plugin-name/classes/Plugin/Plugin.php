@@ -4,7 +4,7 @@
  *
  * @author    Code Atlantic
  * @package   {PLUGIN_NAMESPACE}
- * @copyright (c) 2023, Code Atlantic LLC.
+ * @copyright (c) 2024, Code Atlantic LLC.
  */
 
 namespace {PLUGIN_NAMESPACE}\Plugin;
@@ -58,7 +58,7 @@ class Plugin {
 		$edd_id = $this->get( 'edd_id' );
 
 		// Handle licensing
-		if ($edd_id && $edd_id > 0 && class_exists( 'PUM_Extension_License' ) ) {
+		if ( $edd_id && $edd_id > 0 && class_exists( 'PUM_Extension_License' ) ) {
 			new PUM_Extension_License(
 				$this->get( 'file' ),
 				$this->get( 'name' ),
@@ -75,13 +75,13 @@ class Plugin {
 
 	/**
 	 * Register the extension is enabled.
-	 * 
+	 *
 	 * @param array $enabled_extensions
 	 *
 	 * @return array
 	 */
 	public function enabled_extensions( $enabled_extensions = [] ) {
-		$enabled_extensions[ $this->get('slug') ] = $this->extension_class_name;
+		$enabled_extensions[ $this->get( 'slug' ) ] = $this->extension_class_name;
 
 		return $enabled_extensions;
 	}
@@ -200,9 +200,9 @@ class Plugin {
 	protected function registered_controllers() {
 		return [
 			// Controllers.
-			'Admin'    => new \{PLUGIN_NAMESPACE}\Controllers\Admin( $this ),
-			'Assets'   => new \{PLUGIN_NAMESPACE}\Controllers\Assets( $this ),
-			'Frontend' => new \{PLUGIN_NAMESPACE}\Controllers\Frontend( $this ),
+			'Admin'    => new \(){PLUGIN_NAMESPACE}\Controllers\Admin( $this ),
+			'Assets'   => new \(){PLUGIN_NAMESPACE}\Controllers\Assets( $this ),
+			'Frontend' => new \(){PLUGIN_NAMESPACE}\Controllers\Frontend( $this ),
 		];
 	}
 

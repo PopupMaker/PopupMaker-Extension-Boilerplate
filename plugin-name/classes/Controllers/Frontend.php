@@ -2,7 +2,7 @@
 /**
  * Frontend general setup.
  *
- * @copyright (c) 2023, Code Atlantic LLC.
+ * @copyright (c) 2024, Code Atlantic LLC.
  * @package {PLUGIN_NAMESPACE}
  */
 
@@ -38,5 +38,4 @@ class Frontend extends Controller {
 	public function hooks() {
 		// Add frontend hooks and filters.
 	}
-
 }

@@ -2,7 +2,7 @@
 /**
  * Admin controller.
  *
- * @copyright (c) 2022, Code Atlantic LLC.
+ * @copyright (c) 2024, Code Atlantic LLC.
  *
  * @package {PLUGIN_NAMESPACE}
  */

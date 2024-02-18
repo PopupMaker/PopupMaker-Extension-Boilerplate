@@ -4,7 +4,7 @@
  *
  * @author    Code Atlantic
  * @package   {PLUGIN_NAMESPACE}
- * @copyright (c) 2023, Code Atlantic LLC.
+ * @copyright (c) 2024, Code Atlantic LLC.
  */
 
 namespace {PLUGIN_NAMESPACE}\Plugin;

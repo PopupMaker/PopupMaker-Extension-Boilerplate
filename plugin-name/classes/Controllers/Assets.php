@@ -3,7 +3,7 @@
  * Plugin assets controller.
  *
  * @package {PLUGIN_NAMESPACE}\Admin
- * @copyright (c) 2023 Code Atlantic LLC.
+ * @copyright (c) 2024 Code Atlantic LLC.
  */
 
 namespace {PLUGIN_NAMESPACE}\Controllers;
@@ -36,23 +36,23 @@ class Assets extends Controller {
 	 */
 	public function get_packages() {
 		$packages = [
-			'admin'  => [
-				'handle'   => '{PLUGIN_SLUG}-admin',
-				'styles'   => true,
+			'admin'    => [
+				'handle' => '{PLUGIN_SLUG}-admin',
+				'styles' => true,
 				/**
 				 * Use this to pass variables to the script.
 				 *
 				 * 'varsName' => 'pluginNameAdmin',
 				 * 'vars'     => [
-				 * 	   'adminUrl'  => admin_url( 'admin-ajax.php' ),
+				 *     'adminUrl'  => admin_url( 'admin-ajax.php' ),
 				 *     'wpVersion' => $wp_version,
 				 * ],
 				 */
-				'deps' => [],
+				'deps'   => [],
 			],
-			'frontend'  => [
-				'handle'   => '{PLUGIN_SLUG}-frontend',
-				'styles'   => true,
+			'frontend' => [
+				'handle' => '{PLUGIN_SLUG}-frontend',
+				'styles' => true,
 				/**
 				 * Use this to pass variables to the script.
 				 *
@@ -61,7 +61,7 @@ class Assets extends Controller {
 				 *     'wpVersion' => $wp_version,
 				 * ],
 				 */
-				'deps' => [],
+				'deps'   => [],
 			],
 		];
 

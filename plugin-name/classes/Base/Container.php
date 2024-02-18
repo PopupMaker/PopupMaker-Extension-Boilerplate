@@ -2,7 +2,7 @@
 /**
  * Plugin container.
  *
- * @copyright (c) 2021, Code Atlantic LLC.
+ * @copyright (c) 2024, Code Atlantic LLC.
  *
  * @package {PLUGIN_NAMESPACE}
  */
