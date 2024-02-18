@@ -1,0 +1,22 @@
+parameters:
+    level: 6
+    paths:
+        - classes/
+        - inc/
+        - {PLUGIN_SLUG}.php
+        - uninstall.php
+    scanDirectories:
+        - bin/
+        - classes/
+        - inc/
+    scanFiles:
+        - {PLUGIN_SLUG}.php
+        - uninstall.php
+    bootstrapFiles:
+        - bin/phpstan-bootstrap.php
+    stubFiles:
+    excludePaths:
+        - tests/
+    dynamicConstantNames:
+        - 'IS_WPCOM'
+        - 'WP_CLI'

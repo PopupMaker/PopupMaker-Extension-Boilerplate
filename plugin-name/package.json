@@ -1,0 +1,77 @@
+{
+	"name": "{PLUGIN_SLUG}",
+	"version": "{PLUGIN_VERSION}",
+	"description": "",
+	"author": "Popup Maker",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"wordpress",
+		"popup maker"
+	],
+	"homepage": "{PLUGIN_GITHUB_URL}#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+{PLUGIN_GITHUB_URL}.git"
+	},
+	"bugs": {
+		"url": "{PLUGIN_GITHUB_URL}/issues"
+	},
+	"engines": {
+		"node": ">=^18"
+	},
+	"files": [
+		"assets/**/*",
+		"classes/**/*",
+		"dist/**/*",
+		"inc/**/*",
+		"languages/**/*",
+		"vendor/autoload.php",
+		"vendor/composer/*.php",
+		"vendor/composer/*.json",
+		"vendor-prefixed/**/*",
+		"readme.txt",
+		"index.php",
+		"{PLUGIN_SLUG}.php",
+		"contributors.txt",
+		"index.php",
+		"uninstall.php"
+	],
+	"dependencies": {},
+	"devDependencies": {
+		"@code-atlantic/browserslist-config": "^1.0.1",
+		"@code-atlantic/eslint-plugin": "^1.2.1",
+		"@code-atlantic/stylelint-config": "^1.2.0",
+		"@wordpress/prettier-config": "^3.8.0",
+		"@wordpress/scripts": "^27.2.0",
+		"path": "^0.12.7",
+		"prettier": "npm:wp-prettier@3.0.3",
+		"wp-pot-cli": "^1.5.0"
+	},
+	"scripts": {
+		"build": "wp-scripts build",
+		"build:tsc": "tsc ./src/index.ts --outDir dist",
+		"build:types": "tsc --declaration --emitDeclarationOnly",
+		"check-engines": "wp-scripts check-engines",
+		"format": "wp-scripts format",
+		"format:src": "wp-scripts format ./src",
+		"format:php": "npm run composer run-script format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:md:docs": "wp-scripts lint-md-docs",
+		"lint:md:js": "wp-scripts lint-md-js",
+		"lint:js": "wp-scripts lint-js ./src",
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
+		"prelint:php": "npm run composer install --no-interaction",
+		"lint:php": "npm run composer run-script lint",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start",
+		"start:hot": "wp-scripts start --hot",
+		"test:e2e": "wp-scripts test-e2e",
+		"test:unit": "wp-scripts test-unit-js",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"translate": "wp-pot --src './classes/**/*.php' --src '!./build/**/*.*' --src '!./vendor/**/*.*' --src '!./dist/**/*.*' --write=true --dest-file 'languages/{PLUGIN_SLUG}.pot' --package 'Plugin Name' --domain '{PLUGIN_SLUG}' --last-translator 'Code Atlantic <support@code-atlantic.com>' --team 'Code Atlantic <support@code-atlantic.com>' --bug-report 'https://code-atlantic.com/contact/'",
+		"build:release": "composer install -o --no-dev && npm run build && npm run copy-build",
+		"zip:release": "npm run build:release && mv ./build ./{PLUGIN_SLUG} && zip -r {PLUGIN_SLUG}.zip ./{PLUGIN_SLUG} && rm -rf ./{PLUGIN_SLUG}"
+	},
+	"babel": {}
+}

@@ -1,0 +1,92 @@
+{
+	"name": "popup-maker/{PLUGIN_SHORTSLUG}",
+	"version": "2.1.0",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"minimum-stability": "dev",
+	"require": {
+		"composer/installers": "~2.2.0",
+		"pimple/pimple": "~3.5",
+		"code-atlantic/prerequisite-checks": "^1.2.0",
+		"code-atlantic/wp-autoloader": "^1.0.0",
+		"code-atlantic/wp-plugin-install-routine": "^1.1.0"
+	},
+	"require-dev": {
+		"code-atlantic/coding-standards": "^1.1.0",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0.0",
+		"phpstan/phpstan": "^1.10.58",
+		"szepeviktor/phpstan-wordpress": "^v1.3.2",
+		"phpstan/extension-installer": "^1.3.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"{PLUGIN_NAMESPACE}\\": "classes/"
+		},
+		"classmap": [
+			"vendor-prefixed"
+		]
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"{PLUGIN_NAMESPACE}\\Tests\\": "tests/unit/"
+		}
+	},
+	"extra": {
+		"strauss": {
+			"target_directory": "/vendor-prefixed/",
+			"namespace_prefix": "{PLUGIN_NAMESPACE}\\Vendor\\",
+			"classmap_prefix": "{PLUGIN_NAMESPACE}_",
+			"constant_prefix": "{PLUGIN_CONSTANTS_PREFIX}_",
+			"packages": [
+				"pimple/pimple",
+				"code-atlantic/prerequisite-checks",
+				"code-atlantic/wp-autoloader",
+				"code-atlantic/wp-plugin-install-routine"
+			],
+			"delete_vendor_packages": true
+		}
+	},
+	"prefer-stable": true,
+	"scripts": {
+		"format": "vendor/bin/phpcbf --standard=.phpcs.xml.dist --report-summary --report-source",
+		"lint": "vendor/bin/phpcs --standard=.phpcs.xml.dist",
+		"generate-stubs": "vendor/bin/generate-stubs --finder=./bin/generate-stubs.php --out={PLUGIN_SLUG}.stub --stats --force --include-inaccessible-class-nodes",
+		"install-strauss": [
+			"test -f strauss.phar || curl -o strauss.phar -L -C - https://github.com/BrianHenryIE/strauss/releases/latest/download/strauss.phar"
+		],
+		"clean-vendor-prefix-folder": [
+			"rm -rf vendor-prefixed/**/*"
+		],
+		"post-install-cmd": [
+			"@clean-vendor-prefix-folder",
+			"@strauss",
+			"composer dump-autoload"
+		],
+		"post-update-cmd": [
+			"@clean-vendor-prefix-folder",
+			"@strauss",
+			"composer dump-autoload"
+		],
+		"phpstan": [
+			"vendor/bin/phpstan analyse --memory-limit=1024"
+		],
+		"psalm": [
+			"vendor/bin/psalm --threads=4"
+		],
+		"strauss": [
+			"@install-strauss",
+			"@php strauss.phar"
+		],
+		"test:unit": "phpunit --configuration tests/unit/phpunit.xml --no-coverage",
+		"coverage": "phpunit --configuration tests/unit/phpunit.xml --coverage-html coverage/unit/",
+		"test:watch": "phpunit-watcher watch < /dev/tty"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"composer/installers": true,
+			"phpstan/extension-installer": true
+		},
+		"optimize-autoloader": true
+	}
+}

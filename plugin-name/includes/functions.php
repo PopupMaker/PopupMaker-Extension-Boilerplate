@@ -2,10 +2,9 @@
 /**
  * Helper Functions
  *
- * @package     PopMake\PluginName\Functions
- * @since       1.0.0
+ * @package {PLUGIN_NAMESPACE}\Functions
+ * @since   {PLUGIN_VERSION}
  */
-
 
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;

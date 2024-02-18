@@ -1,0 +1,51 @@
+# Languages folder (built at release).
+/languages/*
+
+# Tests & cache
+.phpunit.result.cache
+
+# Built code
+**/build/
+**/build/**/*
+**/build-types/
+**/build-types/**/*
+node_modules
+release
+dist
+languages
+vendor
+vendor-prefixed
+
+# Coverage
+coverage
+
+# Logs
+logs
+
+# OS & generated files.
+yarn-error.log
+.php_cs.cache
+*.tsbuildinfo
+lerna-debug.log
+npm-debug.log
+packages/*/lib
+.idea
+strauss.phar
+*.zip
+.DS_Store
+
+# Editors
+project.xml
+project.properties
+/nbproject/private/
+.buildpath
+.project
+.settings*
+.idea
+*.code-workspace
+.vscode/*
+!.vscode/*.code-workspace
+*.sublime-project
+*.sublime-workspace
+.sublimelinterrc
+.wp-env.override.json

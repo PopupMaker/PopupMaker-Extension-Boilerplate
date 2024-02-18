@@ -1,0 +1,15 @@
+{
+    "EDD_ID": null,
+    "PLUGIN_NAME": "Plugin Name",
+    "PLUGIN_SHORTNAME": "Name",
+    "PLUGIN_DESCRIPTION": "A brief description of the plugin.",
+    "PLUGIN_SLUG": "plugin-name",
+    "PLUGIN_PREFIX": "plugin_name",
+    "PLUGIN_SHORTSLUG": "name",
+    "PLUGIN_TEXT_DOMAIN": "plugin-name",
+    "PLUGIN_NAMESPACE": "PluginName",
+    "PLUGIN_CONSTANTS_PREFIX": "PLUGIN_NAME",
+    "PLUGIN_GITHUB_URL": "https://github.com/popupmaker/extension-boilerplate",
+    "MIN_WP_VERSION": "6.3",
+    "MIN_PHP_VERSION": "7.4"
+}

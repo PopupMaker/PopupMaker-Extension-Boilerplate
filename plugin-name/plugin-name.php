@@ -1,17 +1,21 @@
 <?php
 /**
- * Plugin Name:     @todo
- * Plugin URI:      @todo
- * Description:     @todo
- * Version:         1.0.0
- * Author:          @todo
- * Author URI:      @todo
- * Text Domain:     plugin-name
+ * Plugin Name: {PLUGIN_NAME}
+ * Plugin URI: 
+ * Description: {PLUGIN_DESCRIPTION}
+ * Version: 1.0.0
+ * Author: Code Atlantic
+ * Author URI: https://code-atlantic.com/?utm_campaign=plugin-info&utm_source=php-file-header&utm_medium=plugin-ui&utm_content=author-uri
+ * Donate link: https://code-atlantic.com/donate/?utm_campaign=donations&utm_source=php-file-header&utm_medium=plugin-ui&utm_content=donate-link
+ * Text Domain: {PLUGIN_TEXT_DOMAIN}
  *
- * @package         PopMake\PluginName
- * @author          @todo
- * @copyright       Copyright (c) @todo
+ * Minimum PHP: {MIN_PHP_VERSION}
+ * Minimum WP: {MIN_WP_VERSION}
  *
+ * @package    {PLUGIN_NAME}}
+ * @author     Code Atlantic
+ * @copyright  Copyright (c) 2023, Code Atlantic LLC.
+ * 
  * IMPORTANT! Ensure that you make the following adjustments
  * before releasing your extension:
  *
@@ -43,216 +47,147 @@
  *   FUNCTIONS CAN CAUSE PLUGIN CONFLICTS!
  */
 
+namespace {PLUGIN_NAMESPACE};
 
-// Exit if accessed directly
-if( !defined( 'ABSPATH' ) ) exit;
-
-if( !class_exists( 'PopMake_Plugin_Name' ) ) {
-
-    /**
-     * Main PopMake_Plugin_Name class
-     *
-     * @since       1.0.0
-     */
-    class PopMake_Plugin_Name {
-
-        /**
-         * @var         PopMake_Plugin_Name $instance The one true PopMake_Plugin_Name
-         * @since       1.0.0
-         */
-        private static $instance;
-
-
-        /**
-         * Get active instance
-         *
-         * @access      public
-         * @since       1.0.0
-         * @return      object self::$instance The one true PopMake_Plugin_Name
-         */
-        public static function instance() {
-            if( !self::$instance ) {
-                self::$instance = new PopMake_Plugin_Name();
-                self::$instance->setup_constants();
-                self::$instance->includes();
-                self::$instance->load_textdomain();
-                self::$instance->hooks();
-            }
-
-            return self::$instance;
-        }
-
-
-        /**
-         * Setup plugin constants
-         *
-         * @access      private
-         * @since       1.0.0
-         * @return      void
-         */
-        private function setup_constants() {
-            // Plugin version
-            define( 'POPMAKE_PLUGIN_NAME_VER', '1.0.0' );
-
-            // Plugin path
-            define( 'POPMAKE_PLUGIN_NAME_DIR', plugin_dir_path( __FILE__ ) );
-
-            // Plugin URL
-            define( 'POPMAKE_PLUGIN_NAME_URL', plugin_dir_url( __FILE__ ) );
-        }
-
-
-        /**
-         * Include necessary files
-         *
-         * @access      private
-         * @since       1.0.0
-         * @return      void
-         */
-        private function includes() {
-            // Include scripts
-            require_once POPMAKE_PLUGIN_NAME_DIR . 'includes/scripts.php';
-            require_once POPMAKE_PLUGIN_NAME_DIR . 'includes/functions.php';
-
-            /**
-             * @todo        The following files are not included in the boilerplate, but
-             *              the referenced locations are listed for the purpose of ensuring
-             *              path standardization in Popup Maker extensions. Uncomment any that are
-             *              relevant to your extension, and remove the rest.
-             */
-            // require_once POPMAKE_PLUGIN_NAME_DIR . 'includes/shortcodes.php';
-            // require_once POPMAKE_PLUGIN_NAME_DIR . 'includes/widgets.php';
-        }
-
-
-        /**
-         * Run action and filter hooks
-         *
-         * @access      private
-         * @since       1.0.0
-         * @return      void
-         *
-         * @todo        The hooks listed in this section are a guideline, and
-         *              may or may not be relevant to your particular extension.
-         *              Please remove any unnecessary lines, and refer to the
-         *              WordPress codex and Popup Maker documentation for additional
-         *              information on the included hooks.
-         *
-         *              This method should be used to add any filters or actions
-         *              that are necessary to the core of your extension only.
-         *              Hooks that are relevant to meta boxes, widgets and
-         *              the like can be placed in their respective files.
-         *
-         *              IMPORTANT! If you are releasing your extension as a
-         *              commercial extension in the Popup Maker store, DO NOT remove
-         *              the license check!
-         */
-        private function hooks() {
-            // Register settings
-            add_filter( 'popmake_settings_extensions', array( $this, 'settings' ), 1 );
-
-            // Handle licensing
-            // @todo        Replace the Plugin Name and Your Name with your data
-            if( class_exists( 'PopMake_License' ) ) {
-                $license = new PopMake_License( __FILE__, 'Plugin Name', POPMAKE_PLUGIN_NAME_VER, 'Your Name' );
-            }
-        }
-
-
-        /**
-         * Internationalization
-         *
-         * @access      public
-         * @since       1.0.0
-         * @return      void
-         */
-        public function load_textdomain() {
-            // Set filter for language directory
-            $lang_dir = POPMAKE_PLUGIN_NAME_DIR . '/languages/';
-            $lang_dir = apply_filters( 'popmake_plugin_name_languages_directory', $lang_dir );
-
-            // Traditional WordPress plugin locale filter
-            $locale = apply_filters( 'plugin_locale', get_locale(), 'popmake-plugin-name' );
-            $mofile = sprintf( '%1$s-%2$s.mo', 'popmake-plugin-name', $locale );
-
-            // Setup paths to current locale file
-            $mofile_local   = $lang_dir . $mofile;
-            $mofile_global  = WP_LANG_DIR . '/popmake-plugin-name/' . $mofile;
-
-            if( file_exists( $mofile_global ) ) {
-                // Look in global /wp-content/languages/popmake-plugin-name/ folder
-                load_textdomain( 'popmake-plugin-name', $mofile_global );
-            } elseif( file_exists( $mofile_local ) ) {
-                // Look in local /wp-content/plugins/popmake-plugin-name/languages/ folder
-                load_textdomain( 'popmake-plugin-name', $mofile_local );
-            } else {
-                // Load the default language files
-                load_plugin_textdomain( 'popmake-plugin-name', false, $lang_dir );
-            }
-        }
-
-
-        /**
-         * Add settings
-         *
-         * @access      public
-         * @since       1.0.0
-         * @param       array $settings The existing Popup Maker settings array
-         * @return      array The modified Popup Maker settings array
-         */
-        public function settings( $settings ) {
-            $new_settings = array(
-                array(
-                    'id'    => 'popmake_plugin_name_settings',
-                    'name'  => '<strong>' . __( 'Plugin Name Settings', 'popmake-plugin-name' ) . '</strong>',
-                    'desc'  => __( 'Configure Plugin Name Settings', 'popmake-plugin-name' ),
-                    'type'  => 'header',
-                )
-            );
-
-            return array_merge( $settings, $new_settings );
-        }
-    }
-} // End if class_exists check
-
+defined( 'ABSPATH' ) || exit;
 
 /**
- * The main function responsible for returning the one true PopMake_Plugin_Name
- * instance to functions everywhere
+ * Define plugin's global configuration.
  *
- * @since       1.0.0
- * @return      PopMake_Plugin_Name The one true PopMake_Plugin_Name
- *
- * @todo        Inclusion of the activation code below isn't mandatory, but
- *              can prevent any number of errors, including fatal errors, in
- *              situations where your extension is activated but Popup Maker is not
- *              present.
+ * @return array<string,mixed>
  */
-function popmake_plugin_name_load() {
-    if( ! class_exists( 'Popup_Maker' ) ) {
-        if( ! class_exists( 'PopMake_Extension_Activation' ) ) {
-            require_once 'includes/class.extension-activation.php';
-        }
-
-        $activation = new PopMake_Extension_Activation( plugin_dir_path( __FILE__ ), basename( __FILE__ ) );
-        $activation = $activation->run();
-    } else {
-        PopMake_Plugin_Name::instance();
-    }
+function get_plugin_config() {
+	return [
+		'name'          => \__( '{PLUGIN_NAME}', '{PLUGIN_TEXT_DOMAIN}' ),
+		'slug'          => '{PLUGIN_SLUG}',
+		'version'       => '1.0.0',
+		'option_prefix' => '{PLUGIN_PREFIX}',
+		'text_domain'   => '{PLUGIN_TEXT_DOMAIN}',
+		'edd_id'		=> {EDD_ID},
+		'fullname'      => \__( '{PLUGIN_NAME}', '{PLUGIN_TEXT_DOMAIN}' ),
+		'min_php_ver'   => '{MIN_PHP_VERSION}',
+		'min_wp_ver'    => '{MIN_WP_VERSION}',
+		'file'          => __FILE__,
+		'url'           => \plugin_dir_url( __FILE__ ),
+		'path'          => \realpath( \plugin_dir_path( __FILE__ ) ) . \DIRECTORY_SEPARATOR,
+	];
 }
-add_action( 'plugins_loaded', 'popmake_plugin_name_load' );
-
 
 /**
- * The activation hook is called outside of the singleton because WordPress doesn't
- * register the call from within the class, since we are preferring the plugins_loaded
- * hook for compatibility, we also can't reference a function inside the plugin class
- * for the activation function. If you need an activation function, put it here.
+ * Get config or config property.
  *
- * @since       1.0.0
- * @return      void
+ * @param string|null $key Key of config item to return.
+ *
+ * @return mixed
  */
-function popmake_plugin_name_activation() {
-    /* Activation functions here */
+function config( $key = null ) {
+	$config = get_plugin_config();
+
+	if ( ! isset( $key ) ) {
+		return $config;
+	}
+
+	return isset( $config[ $key ] ) ? $config[ $key ] : false;
 }
-register_activation_hook( __FILE__, 'popmake_plugin_name_activation' );
+
+/**
+ * Register autoloader.
+ */
+require_once __DIR__ . '/vendor-prefixed/code-atlantic/wp-autoloader/src/Autoloader.php';
+
+if ( ! \{PLUGIN_NAMESPACE}\Vendor\CodeAtlantic\Autoloader\Autoloader::init( config( 'name' ), config( 'path' ) ) ) {
+	return;
+}
+
+/**
+ * Check plugin prerequisites.
+ *
+ * @return bool
+ */
+function check_prerequisites() {
+
+	// 1.a Check Prerequisites.
+	$prerequisites = new \{PLUGIN_NAMESPACE}\Vendor\CodeAtlantic\PrerequisiteChecks\Prerequisites(
+		[
+			[
+				// a. PHP Min Version.
+				'type'    => 'php',
+				'version' => config( 'min_php_ver' ),
+			],
+			// a. PHP Min Version.
+			[
+				'type'    => 'wp',
+				'version' => config( 'min_wp_ver' ),
+			],
+			[
+				'type'            => 'plugin',
+				'slug'            => 'popup-maker',
+				'name'            => __( 'Popup Maker', 'popup-maker' ),
+				'version'         => '1.18.0',
+				'check_installed' => true,
+			],
+		],
+		config()
+	);
+
+	/**
+	 * 1.b If there are missing requirements, render error messaging and return.
+	 */
+	if ( $prerequisites->check() === false ) {
+		$prerequisites->setup_notices();
+
+		return false;
+	}
+
+
+	return true;
+}
+
+add_action(
+	'plugins_loaded',
+	function () {
+		if ( check_prerequisites() ) {
+			plugin_instance();
+		}
+	},
+	// Core plugin loads at 11, Pro loads at 12 & addons load at 13.
+	13
+);
+
+/**
+ * Initiates and/or retrieves an encapsulated container for the plugin.
+ *
+ * This kicks it all off, loads functions and initiates the plugins main class.
+ *
+ * @return \{PLUGIN_NAMESPACE}\Plugin\Core
+ */
+function plugin_instance() {
+	static $plugin;
+
+	if ( ! $plugin instanceof \{PLUGIN_NAMESPACE}}\Plugin\Core ) {
+		require_once __DIR__ . '/inc/functions.php';
+		$plugin = new Plugin\Core( get_plugin_config() );
+	}
+
+	return $plugin;
+}
+
+/**
+ * Easy access to all plugin services from the container.
+ *
+ * @see \{PLUGIN_NAMESPACE}\plugin_instance
+ *
+ * @param string|null $service_or_config Key of service or config to fetch.
+ * @return \{PLUGIN_NAMESPACE}\Plugin\Core|mixed
+ */
+function plugin( $service_or_config = null ) {
+	if ( ! isset( $service_or_config ) ) {
+		return plugin_instance();
+	}
+
+	return plugin_instance()->get( $service_or_config );
+}
+
+\register_activation_hook( __FILE__, '\{PLUGIN_NAMESPACE}\Plugin\Install::activate_plugin' );
+\register_deactivation_hook( __FILE__, '\{PLUGIN_NAMESPACE}\Plugin\Install::deactivate_plugin' );
+\register_uninstall_hook( __FILE__, '\{PLUGIN_NAMESPACE}\Plugin\Install::uninstall_plugin' );

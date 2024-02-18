@@ -1,0 +1,6 @@
+/build/*
+/dist/*
+/build-types/*
+/node_modules/*
+/vendor/*
+/.vscode/*
