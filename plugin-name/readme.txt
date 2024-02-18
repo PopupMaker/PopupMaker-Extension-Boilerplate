@@ -6,7 +6,7 @@ Donate link:
 Tags: 
 Requires at least: {MIN_WP_VERSION}
 Tested up to: 6.5
-Stable tag: 1.0.0
+Stable tag: {PLUGIN_VERSION}
 Requires PHP: 7.4
 License: GPLv3 (or later)
 

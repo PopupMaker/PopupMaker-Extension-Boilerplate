@@ -147,9 +147,9 @@ class Plugin {
 		if ( false !== $has_old_data ) {
 			$data = [
 				// @todo Update this to the last known version prior to the one implementing this mechanism.
-				'version'         => '1.0.0',
+				'version'         => '{PLUGIN_VERSION}',
 				'upgraded_from'   => null,
-				'initial_version' => '1.0.0',
+				'initial_version' => '{PLUGIN_VERSION}',
 			];
 		}
 

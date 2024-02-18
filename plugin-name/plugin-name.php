@@ -3,7 +3,7 @@
  * Plugin Name: {PLUGIN_NAME}
  * Plugin URI: 
  * Description: {PLUGIN_DESCRIPTION}
- * Version: 1.0.0
+ * Version: {PLUGIN_VERSION}
  * Author: Code Atlantic
  * Author URI: https://code-atlantic.com/?utm_campaign=plugin-info&utm_source=php-file-header&utm_medium=plugin-ui&utm_content=author-uri
  * Donate link: https://code-atlantic.com/donate/?utm_campaign=donations&utm_source=php-file-header&utm_medium=plugin-ui&utm_content=donate-link
@@ -60,7 +60,7 @@ function get_plugin_config() {
 	return [
 		'name'          => \__( '{PLUGIN_NAME}', '{PLUGIN_TEXT_DOMAIN}' ),
 		'slug'          => '{PLUGIN_SLUG}',
-		'version'       => '1.0.0',
+		'version'       => '{PLUGIN_VERSION}',
 		'option_prefix' => '{PLUGIN_PREFIX}',
 		'text_domain'   => '{PLUGIN_TEXT_DOMAIN}',
 		'edd_id'		=> {EDD_ID},
