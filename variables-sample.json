@@ -8,6 +8,7 @@
     "PLUGIN_SHORTSLUG": "name",
     "PLUGIN_TEXT_DOMAIN": "plugin-name",
     "PLUGIN_NAMESPACE": "PluginName",
+    "PLUGIN_NAMESPACE_SLASHED": "PluginName",
     "PLUGIN_CONSTANTS_PREFIX": "PLUGIN_NAME",
     "PLUGIN_GITHUB_URL": "https://github.com/popupmaker/extension-boilerplate",
     "MIN_WP_VERSION": "6.3",
