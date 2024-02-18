@@ -1,0 +1,16 @@
+{
+  "name": "extension-boilerplate",
+  "version": "2.0.0",
+  "description": "The Popup Maker Extension Boilerplate serves as a foundation and aims to provide a standardized guide for building extensions. Just download, tweak a few things, and you'll be able to get to the real code in no time!",
+  "main": "index.js",
+  "bin": {
+    "extension-boilerplate": "bin/build-extension.js"
+  },
+  "scripts": {
+    "build": "node bin/build-extension.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
