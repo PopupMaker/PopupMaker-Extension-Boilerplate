@@ -6,10 +6,9 @@ const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 const stat = promisify(fs.stat);
 const mkdir = promisify(fs.mkdir);
-const copyFile = promisify(fs.copyFile);
 
 const variablesPath = './variables.json';
-const sourceDir = './plugin-name'; // Source directory to clone
+const sourceDir = './plugin-name'; // Adjust this path as necessary
 let variables = {};
 
 async function readVariables() {
@@ -33,12 +32,15 @@ async function cloneAndReplace(directory, newDirectory) {
             if (itemStat.isDirectory()) {
                 await cloneAndReplace(oldPath, newPath);
             } else {
+                console.log(`Processing file: ${oldPath}`); // Log the file being processed
                 let content = await readFile(oldPath, 'utf8');
                 Object.keys(variables).forEach((key) => {
-                    const regex = new RegExp(key, 'g');
+                    // Adjusted regex to match single-brace placeholders
+                    const regex = new RegExp(`{${key}}`, 'g');
                     content = content.replace(regex, variables[key]);
                 });
                 await writeFile(newPath, content, 'utf8');
+                console.log(`Replaced content in: ${newPath}`); // Log after processing
             }
         }
     } catch (err) {

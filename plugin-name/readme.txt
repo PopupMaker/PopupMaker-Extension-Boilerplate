@@ -1,4 +1,4 @@
-=== Popup Maker - {PLUGIN_NAME} ===
+=== Popup Maker - {PLUGIN_SHORTNAME} ===
 Contributors: codeatlantic, danieliser
 Plugin URI: 
 Author URI: 

@@ -123,7 +123,7 @@ function check_prerequisites() {
 				'type'            => 'plugin',
 				'slug'            => 'popup-maker',
 				'name'            => __( 'Popup Maker', 'popup-maker' ),
-				'version'         => '1.18.0',
+				'version'         => '{MIN_POPUP_MAKER_VERSION}',
 				'check_installed' => true,
 			],
 		],
