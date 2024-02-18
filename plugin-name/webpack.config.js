@@ -53,6 +53,7 @@ const config = {
 		},
 	},
 	plugins: [
+		...defaultConfig.plugins,
 		// The following will be useful once Popup Maker core has its own dependency extraction plugin.
 		/*
 		...defaultConfig.plugins.filter(
