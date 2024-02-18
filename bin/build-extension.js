@@ -6,6 +6,8 @@ const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 const stat = promisify(fs.stat);
 const mkdir = promisify(fs.mkdir);
+const rmdir = promisify(fs.rmdir);
+const unlink = promisify(fs.unlink);
 
 const variablesPath = './variables.json';
 const sourceDir = './plugin-name'; // Adjust this path as necessary
@@ -18,6 +20,22 @@ async function readVariables() {
     } catch (err) {
         console.error('Error reading variables file:', err);
         process.exit(1);
+    }
+}
+
+async function deleteFolderRecursive(directoryPath) {
+    if (fs.existsSync(directoryPath)) {
+        for (let entry of await readdir(directoryPath)) {
+            const currentPath = path.join(directoryPath, entry);
+            if ((await stat(currentPath)).isDirectory()) {
+                // Recurse
+                await deleteFolderRecursive(currentPath);
+            } else {
+                // Delete file
+                await unlink(currentPath);
+            }
+        }
+        await rmdir(directoryPath);
     }
 }
 
@@ -51,6 +69,13 @@ async function cloneAndReplace(directory, newDirectory) {
 async function main() {
     await readVariables();
     const newDirectory = `./${variables.PLUGIN_SLUG}`;
+
+    // Delete the old directory if it exists
+    console.log(`Checking if the directory ${newDirectory} needs to be removed...`);
+    await deleteFolderRecursive(newDirectory);
+    console.log(`${newDirectory} has been removed, if it existed.`);
+
+    // Proceed with cloning and replacing
     await cloneAndReplace(sourceDir, newDirectory);
     console.log('Clone and replace operation completed.');
 }
