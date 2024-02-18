@@ -19,14 +19,14 @@ abstract class Controller implements \{PLUGIN_NAMESPACE}\Interfaces\Controller {
 	/**
 	 * Plugin Container.
 	 *
-	 * @var \{PLUGIN_NAMESPACE}\Plugin\Core
+	 * @var \{PLUGIN_NAMESPACE}\Plugin\Plugin
 	 */
 	public $container;
 
 	/**
 	 * Initialize based on dependency injection principles.
 	 *
-	 * @param \{PLUGIN_NAMESPACE}\Plugin\Core $container Plugin container.
+	 * @param \{PLUGIN_NAMESPACE}\Plugin\Plugin $container Plugin container.
 	 * @return void
 	 */
 	public function __construct( $container ) {

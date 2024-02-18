@@ -1,7 +1,7 @@
 {
 	"name": "{PLUGIN_SLUG}",
 	"version": "{PLUGIN_VERSION}",
-	"description": "",
+	"description": "{PLUGIN_DESCRIPTION}",
 	"author": "Popup Maker",
 	"license": "GPL-2.0-or-later",
 	"keywords": [
@@ -17,7 +17,7 @@
 		"url": "{PLUGIN_GITHUB_URL}/issues"
 	},
 	"engines": {
-		"node": ">=^18"
+		"node": ">=16"
 	},
 	"files": [
 		"assets/**/*",

@@ -12,7 +12,7 @@
  * Minimum PHP: {MIN_PHP_VERSION}
  * Minimum WP: {MIN_WP_VERSION}
  *
- * @package    {PLUGIN_NAME}}
+ * @package    {PLUGIN_NAME}
  * @author     Code Atlantic
  * @copyright  Copyright (c) 2023, Code Atlantic LLC.
  * 
@@ -159,14 +159,14 @@ add_action(
  *
  * This kicks it all off, loads functions and initiates the plugins main class.
  *
- * @return \{PLUGIN_NAMESPACE}\Plugin\Core
+ * @return \{PLUGIN_NAMESPACE}\Plugin\Plugin
  */
 function plugin_instance() {
 	static $plugin;
 
-	if ( ! $plugin instanceof \{PLUGIN_NAMESPACE}}\Plugin\Core ) {
+	if ( ! $plugin instanceof \{PLUGIN_NAMESPACE}\Plugin\Plugin ) {
 		require_once __DIR__ . '/inc/functions.php';
-		$plugin = new Plugin\Core( get_plugin_config() );
+		$plugin = new Plugin\Plugin( get_plugin_config() );
 	}
 
 	return $plugin;
@@ -178,7 +178,7 @@ function plugin_instance() {
  * @see \{PLUGIN_NAMESPACE}\plugin_instance
  *
  * @param string|null $service_or_config Key of service or config to fetch.
- * @return \{PLUGIN_NAMESPACE}\Plugin\Core|mixed
+ * @return \{PLUGIN_NAMESPACE}\Plugin\Plugin|mixed
  */
 function plugin( $service_or_config = null ) {
 	if ( ! isset( $service_or_config ) ) {

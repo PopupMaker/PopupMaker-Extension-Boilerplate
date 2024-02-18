@@ -1,6 +1,6 @@
 {
 	"name": "popup-maker/{PLUGIN_SHORTSLUG}",
-	"version": "2.1.0",
+	"version": "{PLUGIN_VERSION}",
 	"type": "wordpress-plugin",
 	"license": "GPL-2.0-or-later",
 	"minimum-stability": "dev",
@@ -20,7 +20,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"{PLUGIN_NAMESPACE}\\": "classes/"
+			"{PLUGIN_NAMESPACE_SLASHED}\\": "classes/"
 		},
 		"classmap": [
 			"vendor-prefixed"
@@ -28,14 +28,14 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"{PLUGIN_NAMESPACE}\\Tests\\": "tests/unit/"
+			"{PLUGIN_NAMESPACE_SLASHED}\\Tests\\": "tests/unit/"
 		}
 	},
 	"extra": {
 		"strauss": {
 			"target_directory": "/vendor-prefixed/",
-			"namespace_prefix": "{PLUGIN_NAMESPACE}\\Vendor\\",
-			"classmap_prefix": "{PLUGIN_NAMESPACE}_",
+			"namespace_prefix": "{PLUGIN_NAMESPACE_SLASHED}\\Vendor\\",
+			"classmap_prefix": "{PLUGIN_CONSTANTS_PREFIX}_",
 			"constant_prefix": "{PLUGIN_CONSTANTS_PREFIX}_",
 			"packages": [
 				"pimple/pimple",
